@@ -91,7 +91,6 @@ Example:
 ```javascript
 template = jstpl.create('<div><?title?></div>').compile();
 
-jstpl.loadTemplates();
 /* Template: example-template
 <div>
     <?title?>
@@ -147,3 +146,9 @@ var f = t.compile(null, "var value = arguments[0];");
 A good use for this might be to alias function arguments (as in the example) - that makes the `value` variable available for use within your templates, so you don't have to pepper your code with `arguments[N]`.
 
 The default "header code" is actually the one from above example - however, you can change this by altering `jstpl.defaultHeaderCode`.
+
+## Wait - how does it get the templates from JavaScript comments?
+
+The secret is that when `jstpl.getTemplate()` is called, it calls through to `jstpl.loadTemplates()`.  This function figures out what source file is running (it should be the last `<script>` in the document), fetches it via AJAX and inspects it for comments.
+
+If for some reason you aren't calling `jstpl.getTemplate()` when the script loads (I can't think why you would), then you should call `jstpl.loadTemplates()` manually.
