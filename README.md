@@ -20,6 +20,8 @@ Example code:
 </div>
 ```
 
+Everywhere `<?js` is used, `<?` or `<%` can be used instead (and `%>` can be used in place of `?>`).
+
 ## *Another* templating library?
 
 Yeah, I know there are already quite a few.  But they generally suffer from the following problems:
@@ -33,14 +35,14 @@ Yeah, I know there are already quite a few.  But they generally suffer from the 
 
 There are two different ways to use the special tags in a template.
 
-### 1) No space: `<?variable?>` or `<?jsvariable?>`
+### 1) No space: `<?variable?>`, `<?jsvariable?>` or `<%variable%>`
 
 If there is no space following the `<?` (or `<?js`), the block is substituted with a value.  By default, this is taken as a property of the first function argument (HTML-escaped).
 
 Example template:
 ```html
 <div>
-    <?name?> likes <?food?>.
+    <%name%> likes <%food%>.
 </div>
 ```
 
@@ -57,11 +59,11 @@ Result:
 </div>
 ```
 
-*Note that if your variable name begins with "js", you will need to use the long form, e.g. `<?jsjsvar?>`*
+*Note that if your variable name begins with "js", you will need to either use the long form (`<?jsjsvar?>`) or the percent form (`<%jsvar%>`)*
 
-### 2) With space: `<? ... ?>` or `<?js ... ?>`
+### 2) With space: `<? ... ?>`, `<?js ... ?>` or `<% ... %>`
 
-If there is whitespace following the opening `<?` or `<?js`, the block is run as JS code.
+If there is whitespace following the opening `<?`/`<?js`/`<%`, the block is run as JS code.
 
 The special function `echo()` is defined, which contribues to the output of the function.
 
@@ -120,7 +122,7 @@ You might need to look at that twice - you supply a compile-time function which 
 
 For example, a simple example might be:
 ```javascript
-var t = jstpl.create('Name: <?name?>');
+var t = jstpl.create('Name: <%name%>');
 var f = t.compile(function (variableName) {
     return function (value) {
         return value[variableName].toString();
