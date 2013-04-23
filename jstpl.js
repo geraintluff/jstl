@@ -1,11 +1,16 @@
 (function (global) {
 	var templateMap = {};
+	var loadedUrls = {};
 	function loadTemplates(url) {
 		if (url == undefined) {
 			var scripts = document.getElementsByTagName("script");
 			var lastScript = scripts[scripts.length - 1];
 			url = lastScript.getAttribute("src");
 		}
+		if (loadedUrls[url]) {
+			return;
+		}
+		loadedUrls[url] = true;
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", url, false);
@@ -26,6 +31,7 @@
 		return result;
 	}
 	function getTemplate(key) {
+		loadTemplates();
 		var rawCode = templateMap[key];
 		if (rawCode) {
 			return create(rawCode);
