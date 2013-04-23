@@ -27,7 +27,7 @@ Yeah, I know there are already quite a few.  But they generally suffer from the 
 * **New syntax** - the more complex ones define their own syntax for `if`/`foreach`/etc.
 * **Not customisable** - they give you a set of pre-defined output filters (HTML entities, URI encoding, etc).
 
-`jstpl` tries to avoid these, by introducing minimal syntax while providing a simple base for extending behaviour.
+`jstpl` tries to avoid these, by piggybacking on the JavaScript language while providing a simple base for extending behaviour.
 
 ## Writing templates
 
