@@ -107,5 +107,5 @@
 	publicApi.create = create;
 	publicApi.defaultFunction = defaultFunction;
 	publicApi.defaultHeaderCode = "var value = arguments[0];";
-	global.jstpl = publicApi;
+	global.jstl = publicApi;
 })((typeof module !== 'undefined' && module.exports) ? exports : this);
