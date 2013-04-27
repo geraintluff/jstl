@@ -76,7 +76,7 @@
 		var directFunctions = [];
 		var directFunctionVarNames = [];
 		for (var key in additionalParams) {
-			if (key != null) {
+			if (additionalParams[key]) {
 				directFunctionVarNames.push(key);
 				directFunctions.push(additionalParams[key]);
 			}
