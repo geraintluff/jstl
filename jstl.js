@@ -81,7 +81,7 @@
 				directFunctions.push(additionalParams[key]);
 			}
 		}
-		var parts = (" " + template).split(/<\?js|<\?|<%/g);
+		var parts = (" " + template).split(/<\?js|<%/g);
 		var initialString = parts.shift().substring(1);
 		if (headerText) {
 			jscode += "\n" + headerText + "\n";

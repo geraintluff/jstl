@@ -9,7 +9,7 @@ Rather than trying to design a new language, `jstl` allows you to write JavaScri
 Example code:
 ```html
 <div class="this-user">
-    <div class="name"><?fullname?></div>
+    <div class="name"><?jsfullname?></div>
     <div class="security-status">
         <?js if (window.location.substring(0, 5) == "https") { ?>
         <div class="security-status-encrypted">Encrypted</div>
@@ -20,7 +20,7 @@ Example code:
 </div>
 ```
 
-Everywhere `<?js` is used, `<?` or `<%` can be used instead (and `%>` can be used in place of `?>`).
+Everywhere `<?js` is used, `<%` can be used instead (and `%>` can be used in place of `?>`).
 
 ## *Another* templating library?
 
@@ -35,9 +35,9 @@ Yeah, I know there are already quite a few.  But they generally suffer from the 
 
 There are two different ways to use the special tags in a template.
 
-### 1) Simple substitution: `<?variable?>`, `<?jsvariable?>` or `<%variable%>`
+### 1) Simple substitution:`<?jsvariable?>` or `<%variable%>`
 
-If there is no space following the `<?` (or `<?js`), the block is substituted with a value.  By default, this is taken as a property of the first function argument (HTML-escaped).
+If there is no space following the `<?js` the block is substituted with a value.  By default, this is taken as a property of the first function argument (HTML-escaped).
 
 Example template:
 ```html
@@ -59,11 +59,9 @@ Result:
 </div>
 ```
 
-*Note that if your variable name begins with "js", you will need to either use the long form (`<?jsjsvar?>`) or the percent form (`<%jsvar%>`)*
+### 2) JavaScript code: `<?js ... ?>` or `<% ... %>`
 
-### 2) JavaScript code: `<? ... ?>`, `<?js ... ?>` or `<% ... %>`
-
-If there is whitespace following the opening `<?`/`<?js`/`<%`, the block is run as JS code.
+If there is whitespace following the opening `<?js`/`<%`, the block is run as JS code.
 
 The special function `echo()` is defined, which contribues to the output of the function.
 
@@ -91,11 +89,11 @@ The syntax for loading from comments is to start your comment `/* Template: <ide
 
 Example:
 ```javascript
-template = jstl.create('<div><?title?></div>').compile();
+template = jstl.create('<div><?jstitle?></div>').compile();
 
 /* Template: example-template
 <div>
-    <?title?>
+    <?jstitle?>
 </div>
 */
 template2 = jstl.getTemplate('example-template').compile();

@@ -1,6 +1,6 @@
 {
 	"name": "jstl",
-	"version": "0.0.4",
+	"version": "0.1.0",
 	"author": "Geraint Luff",
 	"description": "JavaScript as a templating language",
 	"keywords": [
